@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Expense &amp; Budget Visualizer</title>
+  <link rel="stylesheet" href="CSS/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+
+  <h1>Expense <span>&amp;</span> Budget Visualizer</h1>
+  <p class="subtitle">Track your spending — stored locally in your browser</p>
+
+  <div class="app">
+
+    <div class="card balance-card">
+      <div>
+        <div class="label">Total Spent</div>
+        <div class="amount negative" id="totalDisplay">$0.00</div>
+      </div>
+      <div class="stats">
+        <div class="stat">
+          <div class="val" id="foodTotal" style="color: var(--food)">$0.00</div>
+          <div class="lbl">Food</div>
+        </div>
+        <div class="stat">
+          <div class="val" id="transportTotal" style="color: var(--transport)">$0.00</div>
+          <div class="lbl">Transport</div>
+        </div>
+        <div class="stat">
+          <div class="val" id="funTotal" style="color: var(--fun)">$0.00</div>
+          <div class="lbl">Fun</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Add Expense</h2>
+      <form id="expenseForm">
+        <div class="form-group">
+          <label for="itemName">Item Name</label>
+          <input type="text" id="itemName" placeholder="e.g. Coffee, Bus ticket…" required />
+        </div>
+        <div class="form-group">
+          <label for="amount">Amount ($)</label>
+          <input type="number" id="amount" placeholder="0.00" min="0.01" step="0.01" required />
+        </div>
+        <div class="form-group">
+          <label for="category">Category</label>
+          <select id="category">
+            <option value="Food">🍔 Food</option>
+            <option value="Transport">🚌 Transport</option>
+            <option value="Fun">🎉 Fun</option>
+          </select>
+        </div>
+        <button type="submit" class="btn-add">+ Add Expense</button>
+      </form>
+    </div>
+
+    <div class="card">
+      <h2>Transactions</h2>
+      <div class="tx-list" id="txList">
+        <div class="empty-state" id="emptyState">No expenses yet. Add one above!</div>
+      </div>
+    </div>
+
+    <div class="card chart-card">
+      <h2>Spending by Category</h2>
+      <div class="chart-wrap">
+        <canvas id="pieChart"></canvas>
+      </div>
+      <div class="chart-legend">
+        <div class="legend-item">
+          <div class="legend-dot" style="background: var(--food)"></div>
+          Food
+        </div>
+        <div class="legend-item">
+          <div class="legend-dot" style="background: var(--transport)"></div>
+          Transport
+        </div>
+        <div class="legend-item">
+          <div class="legend-dot" style="background: var(--fun)"></div>
+          Fun
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="JS/script.js"></script>
+
+</body>
+</html>
